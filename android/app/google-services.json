@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "411742038980",
+    "project_id": "chat-app-38b38",
+    "storage_bucket": "chat-app-38b38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411742038980:android:735113278794a26e4d1291",
+        "android_client_info": {
+          "package_name": "com.example.chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411742038980-6d3k6ab9cp6k4541qto4u5lmeev6sn1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDde9LV4oEgjCnlPF8LmNumsZ48JxxZSlw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411742038980-6d3k6ab9cp6k4541qto4u5lmeev6sn1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
