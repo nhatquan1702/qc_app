@@ -1,14 +1,9 @@
 import 'dart:async';
 import 'package:chat_app/constant/fakeData.dart';
 import 'package:chat_app/mvvm/view/screen/chat/chat_appbar.dart';
-import 'package:chat_app/mvvm/view/screen/chat/chat_buble.dart';
+import 'package:chat_app/mvvm/view/screen/chat/widget/chat_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-
-enum MessageType {
-  Sender,
-  Receiver,
-}
 
 class ChatDetailPage extends StatefulWidget {
   const ChatDetailPage({Key? key}) : super(key: key);
@@ -66,19 +61,9 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
               controller: scrollController,
               physics: const BouncingScrollPhysics(),
               child: Column(
-                children: [
-                  ListView.builder(
-                    itemCount: FakeData.chatMessage.length,
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return ChatBubble(
-                        chatMessage: FakeData.chatMessage[index],
-                      );
-                    },
-                  ),
-                  const SizedBox(
+                children: const [
+                  ChatList(),
+                  SizedBox(
                     height: 80,
                   ),
                 ],
