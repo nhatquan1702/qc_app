@@ -42,8 +42,7 @@ class _StartScreenState extends State<StartScreen> {
                       color: appColor.primaryColor,
                       rootContext: context,
                       onTap: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => const LoginScreen()));
+                        Navigator.pushNamed(context, LoginScreen.routeName);
                       },
                     ),
                     const SizedBox(

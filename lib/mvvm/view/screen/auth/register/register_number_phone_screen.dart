@@ -197,9 +197,7 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => const LoginScreen()));
+                          Navigator.pushNamed(context, LoginScreen.routeName);
                         },
                         child: Text(
                           'Đăng nhập',

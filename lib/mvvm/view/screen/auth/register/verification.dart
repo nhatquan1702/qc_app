@@ -236,10 +236,8 @@ class _VerificatoinState extends State<Verificatoin> {
                       elevation: 0,
                       onPressed: _code.length < 4
                           ? () {
-                              Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const LoginScreen()));
+                              Navigator.pushNamed(
+                                  context, LoginScreen.routeName);
                             }
                           : () {
                               verify();

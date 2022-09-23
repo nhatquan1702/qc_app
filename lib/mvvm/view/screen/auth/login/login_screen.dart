@@ -3,6 +3,7 @@ import 'package:chat_app/mvvm/view/screen/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const routeName = '/login-screen';
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
