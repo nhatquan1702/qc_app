@@ -1,11 +1,48 @@
+import 'package:chat_app/constant/strings.dart';
 import 'package:chat_app/mvvm/view/screen/auth/login/login_screen.dart';
+import 'package:chat_app/mvvm/view/screen/auth/register/register_number_phone_screen.dart';
+import 'package:chat_app/mvvm/view/screen/auth/register/verification.dart';
+import 'package:chat_app/mvvm/view/screen/chat/chat_screen.dart';
+import 'package:chat_app/mvvm/view/screen/dial/dial_screen.dart';
+import 'package:chat_app/mvvm/view/screen/home/home_screen.dart';
 import 'package:chat_app/mvvm/view/screen/others/error_screen.dart';
+import 'package:chat_app/mvvm/view/screen/profile/edit_profile_screen.dart';
 import 'package:flutter/material.dart';
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-    case LoginScreen.routeName:
+    case ConstantStrings.routeToRegisterNumberPhoneScreen:
+      return MaterialPageRoute(
+        builder: (context) => const RegisterWithPhoneNumber(),
+      );
+    case ConstantStrings.routeToLoginScreen:
       return MaterialPageRoute(
         builder: (context) => const LoginScreen(),
+      );
+    case ConstantStrings.routeToHomeScreen:
+      return MaterialPageRoute(
+        builder: (context) => const HomeScreen(),
+      );
+    case ConstantStrings.routeToDialScreen:
+      return MaterialPageRoute(
+        builder: (context) => const DialScreen(),
+      );
+    case ConstantStrings.routeToChatDetailScreen:
+      return MaterialPageRoute(
+        builder: (context) => const ChatDetailScreen(),
+      );
+    case ConstantStrings.routeToEditProfileScreen:
+      return MaterialPageRoute(
+        builder: (context) => const EditProfileScreen(),
+      );
+    case ConstantStrings.routeToVerificationScreen:
+      return MaterialPageRoute(
+        builder: (context) => const VerificationScreen(),
+      );
+    default:
+      return MaterialPageRoute(
+        builder: (context) => const Scaffold(
+          body: ErrorScreen(messageError: 'Một lỗi đã xảy ra', codeError: '000', titleError: 'Lỗi',),
+        ),
       );
     // case OTPScreen.routeName:
     //   final verificationId = settings.arguments as String;
@@ -13,14 +50,6 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     //     builder: (context) => OTPScreen(
     //       verificationId: verificationId,
     //     ),
-    //   );
-    // case UserInformationScreen.routeName:
-    //   return MaterialPageRoute(
-    //     builder: (context) => const UserInformationScreen(),
-    //   );
-    // case SelectContactsScreen.routeName:
-    //   return MaterialPageRoute(
-    //     builder: (context) => const SelectContactsScreen(),
     //   );
     // case MobileChatScreen.routeName:
     //   final arguments = settings.arguments as Map<String, dynamic>;
@@ -50,15 +79,5 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     //       status: status,
     //     ),
     //   );
-    // case CreateGroupScreen.routeName:
-    //   return MaterialPageRoute(
-    //     builder: (context) => const CreateGroupScreen(),
-    //   );
-    default:
-      return MaterialPageRoute(
-        builder: (context) => const Scaffold(
-          body: ErrorScreen(messageError: '', codeError: '', titleError: '',),
-        ),
-      );
   }
 }

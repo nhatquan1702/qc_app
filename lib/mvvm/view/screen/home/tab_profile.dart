@@ -1,16 +1,14 @@
 import 'dart:io';
 import 'dart:math';
+import 'package:chat_app/constant/strings.dart';
 import 'package:chat_app/mvvm/view/screen/home/provider/picker_img_provider.dart';
 import 'package:chat_app/mvvm/view/screen/home/widget/custom_scrollview.dart';
 import 'package:chat_app/mvvm/view/screen/home/widget/show_image.dart';
-import 'package:chat_app/mvvm/view/screen/profile/edit_profile_screen.dart';
 import 'package:chat_app/widget/button_in_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-
-
 
 class TabProfile extends StatefulWidget {
   const TabProfile({Key? key}) : super(key: key);
@@ -52,9 +50,8 @@ class _TabCallsState extends State<TabProfile> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent
-    ));
+    SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Theme.of(context).cardColor,
@@ -98,25 +95,26 @@ class _TabCallsState extends State<TabProfile> {
                   minimumSize: MaterialStateProperty.all<Size>(
                       Size(MediaQuery.of(context).size.width - 48, 32)),
                   elevation: MaterialStateProperty.all<double>(0.0),
-                  foregroundColor:
-                  MaterialStateProperty.all<Color>(Colors.white),
-                  backgroundColor:
-                  MaterialStateProperty.all<Color>(Theme.of(context).primaryColor),
+                  foregroundColor: MaterialStateProperty.all<Color>(
+                      Theme.of(context).cardColor),
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      Theme.of(context).primaryColor),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(color: Theme.of(context).primaryColor))),
+                          side: BorderSide(
+                              color: Theme.of(context).primaryColor))),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const EditProfileScreen()),
-                  );
+                  Navigator.pushNamed(
+                      context, ConstantStrings.routeToEditProfileScreen);
                 },
-                child: Text("CHỈNH SỬA TRANG CÁ NHÂN".toUpperCase(),
+                child: Text(ConstantStrings.editProfile.toUpperCase(),
                     style: const TextStyle(fontSize: 14))),
-           // _buildListPhoto(context),
-            Container(height: 1000,)
+            // _buildListPhoto(context),
+            Container(
+              height: 1000,
+            )
           ],
         ),
       ),
@@ -130,7 +128,7 @@ class _TabCallsState extends State<TabProfile> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(
-              "Ảnh đại diện",
+              ConstantStrings.avatar,
               style: TextStyle(color: myColor.primaryColor),
             ),
             content: SingleChildScrollView(
@@ -145,10 +143,14 @@ class _TabCallsState extends State<TabProfile> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ShowImage(title: 'Ảnh đại diện', imgUrl: 'https://res.cloudinary.com/dmfrvd4tl/image/upload/v1656947957/AI%20QMusic/01fdd3f9a49bc8b528fbf66b13393bf316ba8d97a9_laxhlx.jpg',)),
+                            builder: (context) => const ShowImage(
+                                  title: ConstantStrings.avatar,
+                                  imgUrl:
+                                      'https://res.cloudinary.com/dmfrvd4tl/image/upload/v1656947957/AI%20QMusic/01fdd3f9a49bc8b528fbf66b13393bf316ba8d97a9_laxhlx.jpg',
+                                )),
                       );
                     },
-                    title: const Text("Xem ảnh đại diện"),
+                    title: const Text(ConstantStrings.seeAvatar),
                     leading: Icon(
                       Icons.remove_red_eye,
                       color: myColor.primaryColor,
@@ -162,7 +164,7 @@ class _TabCallsState extends State<TabProfile> {
                     onTap: () {
                       _openGallery(context);
                     },
-                    title: const Text("Chọn từ thư viện"),
+                    title: const Text(ConstantStrings.pickImageGallery),
                     leading: Icon(
                       Icons.account_box,
                       color: myColor.primaryColor,
@@ -176,7 +178,7 @@ class _TabCallsState extends State<TabProfile> {
                     onTap: () {
                       _openCamera(context);
                     },
-                    title: const Text("Chụp ảnh mới"),
+                    title: const Text(ConstantStrings.pickImageCamera),
                     leading: Icon(
                       Icons.camera_alt,
                       color: myColor.primaryColor,
@@ -195,7 +197,7 @@ class _TabCallsState extends State<TabProfile> {
                               borderRadius: BorderRadius.circular(10.0)),
                           primary: myColor.primaryColor),
                       child: Text(
-                        "Huỷ",
+                        ConstantStrings.cancel,
                         style:
                             TextStyle(color: myColor.cardColor, fontSize: 14),
                       ),
@@ -269,10 +271,8 @@ class _TabCallsState extends State<TabProfile> {
         context: context,
         icon: Icons.more_vert,
         function: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const EditProfileScreen()),
-          );
+          Navigator.pushNamed(
+              context, ConstantStrings.routeToEditProfileScreen);
         },
       ),
       const SizedBox(
@@ -281,7 +281,7 @@ class _TabCallsState extends State<TabProfile> {
     ];
   }
 
-  Widget _buildBody (BuildContext context){
+  Widget _buildBody(BuildContext context) {
     return Column(
       children: [
         Stack(
@@ -292,7 +292,9 @@ class _TabCallsState extends State<TabProfile> {
               padding: const EdgeInsets.only(bottom: 60),
               child: CustomScrollviewAppBar(offset: _offset),
             ),
-            const SizedBox(height: 50,),
+            const SizedBox(
+              height: 50,
+            ),
             _buildAvatarImg()
           ],
         ),
@@ -312,7 +314,9 @@ class _TabCallsState extends State<TabProfile> {
         ),
         Text(
           'Graphic Designer',
-          style: TextStyle(fontSize: 16, color: Theme.of(context).canvasColor.withOpacity(0.8)),
+          style: TextStyle(
+              fontSize: 16,
+              color: Theme.of(context).canvasColor.withOpacity(0.8)),
         ),
         const SizedBox(
           height: 16,
@@ -342,4 +346,3 @@ class _TabCallsState extends State<TabProfile> {
     );
   }
 }
-

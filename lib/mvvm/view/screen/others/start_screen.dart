@@ -1,7 +1,5 @@
+import 'package:chat_app/constant/strings.dart';
 import 'package:chat_app/mvvm/view/component/base_button.dart';
-import 'package:chat_app/mvvm/view/screen/auth/login/login_screen.dart';
-import 'package:chat_app/mvvm/view/screen/auth/register/register_name_screen.dart';
-import 'package:chat_app/mvvm/view/screen/auth/register/register_number_phone_screen.dart';
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatefulWidget {
@@ -38,11 +36,12 @@ class _StartScreenState extends State<StartScreen> {
                   children: [
                     BaseButtonFilled(
                       radius: 10,
-                      title: 'Đăng nhập',
+                      title: ConstantStrings.login,
                       color: appColor.primaryColor,
                       rootContext: context,
                       onTap: () {
-                        Navigator.pushNamed(context, LoginScreen.routeName);
+                        Navigator.pushNamed(
+                            context, ConstantStrings.routeToLoginScreen);
                       },
                     ),
                     const SizedBox(
@@ -50,13 +49,12 @@ class _StartScreenState extends State<StartScreen> {
                     ),
                     BaseButtonFilled(
                       radius: 10,
-                      title: 'Đăng ký',
+                      title: ConstantStrings.register,
                       color: appColor.canvasColor.withOpacity(0.2),
                       rootContext: context,
                       onTap: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) =>
-                                const RegisterWithPhoneNumber()));
+                        Navigator.pushReplacementNamed(context,
+                            ConstantStrings.routeToRegisterNumberPhoneScreen);
                       },
                     ),
                     const SizedBox(

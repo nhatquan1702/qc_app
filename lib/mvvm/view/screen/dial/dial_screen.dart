@@ -1,7 +1,7 @@
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:chat_app/constant/strings.dart';
 import 'package:chat_app/mvvm/view/screen/dial/round_button.dart';
 import 'package:flutter/material.dart';
-
 import 'dial_button.dart';
 
 class DialScreen extends StatefulWidget {
@@ -68,32 +68,32 @@ class _DialScreenState extends State<DialScreen> {
                   children: [
                     DialButton(
                       icon: Icons.mic_none_outlined,
-                      text: "Micro",
+                      text: ConstantStrings.mic,
                       press: () {},
                     ),
                     DialButton(
                       icon: Icons.volume_up_outlined,
-                      text: "Loa ngoài",
+                      text: ConstantStrings.volume,
                       press: () {},
                     ),
                     DialButton(
                       icon: Icons.video_call_outlined,
-                      text: "Gọi video",
+                      text: ConstantStrings.videoCall,
                       press: () {},
                     ),
                     DialButton(
                       icon: Icons.messenger_outline,
-                      text: "Nhắn tin",
+                      text: ConstantStrings.chat,
                       press: () {},
                     ),
                     DialButton(
                       icon: Icons.person_add_alt_outlined,
-                      text: "Thêm liên hệ",
+                      text: ConstantStrings.addContact,
                       press: () {},
                     ),
                     DialButton(
                       icon: Icons.voicemail_outlined,
-                      text: "Thư thoại",
+                      text: ConstantStrings.voiceEmail,
                       press: () {},
                     ),
                   ],
@@ -104,7 +104,7 @@ class _DialScreenState extends State<DialScreen> {
                     Navigator.pop(context);
                   },
                   color: Colors.redAccent,
-                  iconColor: Colors.white,
+                  iconColor: appColor.cardColor,
                   size: 72,
                 )
               ],

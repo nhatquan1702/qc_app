@@ -1,3 +1,4 @@
+import 'package:chat_app/constant/strings.dart';
 import 'package:chat_app/mvvm/view/component/base_button.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +39,7 @@ class ErrorScreen extends StatelessWidget {
               ),
               child: BaseButtonFilled(
                 radius: 10,
-                title: 'Thử lại',
+                title: ConstantStrings.reload,
                 color: appColor.canvasColor.withOpacity(0.2),
                 rootContext: context,
                 onTap: () {},

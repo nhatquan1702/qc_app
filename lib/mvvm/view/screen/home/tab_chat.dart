@@ -1,4 +1,5 @@
 import 'package:chat_app/constant/fakeData.dart';
+import 'package:chat_app/constant/strings.dart';
 import 'package:chat_app/mvvm/view/screen/chat/chat_user_list.dart';
 import 'package:chat_app/widget/button_in_appbar.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class _TabChatsState extends State<TabChats> {
         titleTextStyle: TextStyle(
             color: Theme.of(context).primaryColor, fontSize: 24, fontWeight: FontWeight.w400),
         title: Text(
-          'Chat App',
+          ConstantStrings.appName,
           style: TextStyle(color: Theme.of(context).primaryColor,),
         ),
       ),
@@ -40,7 +41,7 @@ class _TabChatsState extends State<TabChats> {
               padding: const EdgeInsets.only(top: 16),
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
-                return ChatUsersList(
+                return ChatUsersListItem(
                   text: FakeData.chatUsers[index].text,
                   secondaryText: FakeData.chatUsers[index].secondaryText,
                   image: FakeData.chatUsers[index].image,

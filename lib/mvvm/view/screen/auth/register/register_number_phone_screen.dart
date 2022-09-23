@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:chat_app/mvvm/view/screen/auth/login/login_screen.dart';
-import 'package:chat_app/mvvm/view/screen/auth/register/verification.dart';
+import 'package:chat_app/constant/strings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
@@ -34,7 +33,7 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
               children: [
                 FadeInDown(
                   child: Text(
-                    'Đăng ký',
+                    ConstantStrings.register,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 24,
@@ -47,7 +46,7 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                     padding: const EdgeInsets.symmetric(
                         vertical: 15.0, horizontal: 20),
                     child: Text(
-                      'Vui lòng nhập số điện thoại của bạn.',
+                      ConstantStrings.pleaseEnterNumberPhone,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 14,
@@ -80,26 +79,23 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                         InternationalPhoneNumberInput(
                           onInputChanged: (PhoneNumber number) {
                             numberPhone = number.toString();
-                            if (kDebugMode) {
-                              print('abc:${number.phoneNumber}');
-                            }
                           },
-                          onInputValidated: (bool value) {
-                            print(value);
-                          },
+                          onInputValidated: (bool value) {},
                           selectorConfig: const SelectorConfig(
                             selectorType: PhoneInputSelectorType.DIALOG,
                           ),
                           searchBoxDecoration: InputDecoration(
-                            labelText: 'Tìm kiếm',
+                            labelText: ConstantStrings.search,
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: appColor.canvasColor.withOpacity(0.5)),
+                              borderSide: BorderSide(
+                                  color: appColor.canvasColor.withOpacity(0.5)),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: appColor.canvasColor.withOpacity(0.5)),
+                              borderSide: BorderSide(
+                                  color: appColor.canvasColor.withOpacity(0.5)),
                             ),
                             labelStyle: TextStyle(
-                              fontSize: 18,
+                                fontSize: 18,
                                 color: appColor.canvasColor.withOpacity(0.5)),
                           ),
                           ignoreBlank: false,
@@ -120,11 +116,7 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                                 color: appColor.canvasColor.withOpacity(0.7),
                                 fontSize: 16),
                           ),
-                          onSaved: (PhoneNumber number) {
-                            if (kDebugMode) {
-                              print('On Saved: $number');
-                            }
-                          },
+                          onSaved: (PhoneNumber number) {},
                         ),
                         Positioned(
                           left: 90,
@@ -148,13 +140,8 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                   child: MaterialButton(
                     minWidth: double.infinity,
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              settings: RouteSettings(
-                                arguments: numberPhone,
-                              ),
-                              builder: (context) => const Verificatoin()));
+                      Navigator.pushNamed(
+                          context, ConstantStrings.routeToVerificationScreen);
                     },
                     color: appColor.primaryColor,
                     shape: RoundedRectangleBorder(
@@ -172,7 +159,7 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                             ),
                           )
                         : Text(
-                            "Gửi OTP",
+                            ConstantStrings.sendOTP,
                             style: TextStyle(
                                 color: appColor.cardColor,
                                 fontWeight: FontWeight.w600),
@@ -188,7 +175,7 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Bạn đã có tài khoản?',
+                        ConstantStrings.haveAccount,
                         style: TextStyle(
                             color: appColor.canvasColor.withOpacity(0.5)),
                       ),
@@ -197,10 +184,11 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.pushNamed(context, LoginScreen.routeName);
+                          Navigator.pushNamed(
+                              context, ConstantStrings.routeToLoginScreen);
                         },
                         child: Text(
-                          'Đăng nhập',
+                          ConstantStrings.login,
                           style: TextStyle(color: appColor.primaryColor),
                         ),
                       )

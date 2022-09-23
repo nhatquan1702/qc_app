@@ -1,21 +1,22 @@
 import 'dart:async';
 import 'package:chat_app/constant/fakeData.dart';
+import 'package:chat_app/constant/strings.dart';
 import 'package:chat_app/mvvm/view/screen/chat/chat_appbar.dart';
 import 'package:chat_app/mvvm/view/screen/chat/widget/chat_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
-class ChatDetailPage extends StatefulWidget {
-  const ChatDetailPage({Key? key}) : super(key: key);
+class ChatDetailScreen extends StatefulWidget {
+  const ChatDetailScreen({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _ChatDetailPageState createState() {
-    return _ChatDetailPageState();
+  _ChatDetailScreenState createState() {
+    return _ChatDetailScreenState();
   }
 }
 
-class _ChatDetailPageState extends State<ChatDetailPage> {
+class _ChatDetailScreenState extends State<ChatDetailScreen> {
   final ScrollController scrollController = ScrollController();
 
   @override
@@ -102,7 +103,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                     Expanded(
                       child: TextField(
                         decoration: InputDecoration(
-                            hintText: "Nhập tin nhắn...",
+                            hintText: ConstantStrings.enterMessage,
                             hintStyle: TextStyle(
                                 color: Theme.of(context)
                                     .canvasColor

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class DialButton extends StatelessWidget {
-
   final IconData icon;
   final String text;
   final VoidCallback press;
 
-  const DialButton({super.key, required this.icon, required this.text, required this.press});
+  const DialButton(
+      {super.key, required this.icon, required this.text, required this.press});
 
   @override
   Widget build(BuildContext context) {

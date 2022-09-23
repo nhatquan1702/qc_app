@@ -1,14 +1,14 @@
-import 'package:chat_app/mvvm/view/screen/chat/chat_screen.dart';
+import 'package:chat_app/constant/strings.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class ChatUsersList extends StatefulWidget {
+class ChatUsersListItem extends StatefulWidget {
   String text;
   String secondaryText;
   String image;
   String time;
   bool isMessageRead;
-  ChatUsersList(
+  ChatUsersListItem(
       {Key? key,
       required this.text,
       required this.secondaryText,
@@ -18,17 +18,15 @@ class ChatUsersList extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<ChatUsersList> createState() => _ChatUsersListState();
+  State<ChatUsersListItem> createState() => _ChatUsersListItemState();
 }
 
-class _ChatUsersListState extends State<ChatUsersList> {
+class _ChatUsersListItemState extends State<ChatUsersListItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return ChatDetailPage();
-        }));
+        Navigator.pushNamed(context, ConstantStrings.routeToChatDetailScreen);
       },
       child: Container(
         padding:
@@ -58,7 +56,10 @@ class _ChatUsersListState extends State<ChatUsersList> {
                           Text(
                             widget.secondaryText,
                             style: TextStyle(
-                                fontSize: 14, color: Colors.grey.shade500),
+                                fontSize: 14,
+                                color: Theme.of(context)
+                                    .canvasColor
+                                    .withOpacity(0.5)),
                           ),
                         ],
                       ),

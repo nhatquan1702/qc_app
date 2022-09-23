@@ -1,23 +1,23 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:chat_app/mvvm/view/screen/auth/login/login_screen.dart';
+import 'package:chat_app/constant/strings.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:pinput/pinput.dart';
 
-class Verificatoin extends StatefulWidget {
-  const Verificatoin({Key? key}) : super(key: key);
+class VerificationScreen extends StatefulWidget {
+  const VerificationScreen({Key? key}) : super(key: key);
 
   @override
-  _VerificatoinState createState() => _VerificatoinState();
+  _VerificationScreenState createState() => _VerificationScreenState();
 }
 
-class _VerificatoinState extends State<Verificatoin> {
+class _VerificationScreenState extends State<VerificationScreen> {
   bool _isResendAgain = false;
   bool _isVerified = false;
   bool _isLoading = false;
   final TextEditingController _pinPutController = TextEditingController();
 
-  String _code = '';
+  final String _code = '';
 
   late Timer _timer;
   int _start = 60;
@@ -90,7 +90,7 @@ class _VerificatoinState extends State<Verificatoin> {
   @override
   Widget build(BuildContext context) {
     final appColor = Theme.of(context);
-    final number_phone = ModalRoute.of(context)!.settings.arguments;
+    final numberPhone = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
         backgroundColor: appColor.cardColor,
         body: SingleChildScrollView(
@@ -157,7 +157,7 @@ class _VerificatoinState extends State<Verificatoin> {
                   FadeInDown(
                       duration: const Duration(milliseconds: 500),
                       child: Text(
-                        "Xác minh",
+                        ConstantStrings.verification,
                         style: TextStyle(
                             color: appColor.primaryColor,
                             fontSize: 30,
@@ -170,7 +170,7 @@ class _VerificatoinState extends State<Verificatoin> {
                     delay: const Duration(milliseconds: 500),
                     duration: const Duration(milliseconds: 500),
                     child: Text(
-                      "Vui lòng nhập mã 6 chữ số được gửi đến \n $number_phone",
+                      "Vui lòng nhập mã 6 chữ số được gửi đến \n $numberPhone",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 15,
@@ -205,7 +205,7 @@ class _VerificatoinState extends State<Verificatoin> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Bạn chưa nhận được OTP?",
+                          ConstantStrings.notSendOTP,
                           style: TextStyle(
                               fontSize: 14,
                               color: appColor.canvasColor.withOpacity(0.6)),
@@ -216,7 +216,7 @@ class _VerificatoinState extends State<Verificatoin> {
                               resend();
                             },
                             child: Text(
-                              _isResendAgain ? "Còn $_start giây" : "Gửi lại",
+                              _isResendAgain ? "Còn $_start giây" : ConstantStrings.resendOTP,
                               style: TextStyle(color: appColor.primaryColor),
                             ))
                       ],
@@ -237,7 +237,7 @@ class _VerificatoinState extends State<Verificatoin> {
                       onPressed: _code.length < 4
                           ? () {
                               Navigator.pushNamed(
-                                  context, LoginScreen.routeName);
+                                  context, ConstantStrings.routeToLoginScreen);
                             }
                           : () {
                               verify();
@@ -262,7 +262,7 @@ class _VerificatoinState extends State<Verificatoin> {
                                   size: 30,
                                 )
                               : Text(
-                                  "Xác nhận",
+                                  ConstantStrings.verification,
                                   style: TextStyle(
                                       color: appColor.cardColor,
                                       fontWeight: FontWeight.w600),

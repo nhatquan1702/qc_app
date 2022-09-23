@@ -1,9 +1,7 @@
-import 'package:chat_app/mvvm/view/screen/auth/register/register_number_phone_screen.dart';
-import 'package:chat_app/mvvm/view/screen/home/home_screen.dart';
+import 'package:chat_app/constant/strings.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
-  static const routeName = '/login-screen';
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -31,8 +29,8 @@ class _LoginState extends State<LoginScreen> {
       });
       await Future.delayed(const Duration(seconds: 2));
       // ignore: use_build_context_synchronously
-      await Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const HomePage()));
+      await Navigator.pushReplacementNamed(
+          context, ConstantStrings.routeToHomeScreen);
       setState(() {
         changeButton = false;
       });
@@ -93,12 +91,12 @@ class _LoginState extends State<LoginScreen> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                             ),
-                            labelText: "Số điện thoại",
+                            labelText: ConstantStrings.numberPhone,
                             suffixStyle:
                                 TextStyle(color: appColor.primaryColor),
                             labelStyle: TextStyle(
                                 color: appColor.canvasColor.withOpacity(0.5)),
-                            hintText: "Nhập số điện thoại",
+                            hintText: ConstantStrings.hintNumberPhone,
                             hintStyle: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400,
@@ -108,7 +106,7 @@ class _LoginState extends State<LoginScreen> {
                             if (value!.isEmpty ||
                                 !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                     .hasMatch(value)) {
-                              return "Số điện thoại không hợp lệ!";
+                              return ConstantStrings.notValidNumberPhone;
                             } else {
                               return null;
                             }
@@ -143,8 +141,8 @@ class _LoginState extends State<LoginScreen> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
                             ),
-                            labelText: "Mật khẩu",
-                            hintText: "Nhập mật khẩu",
+                            labelText: ConstantStrings.passwordTitle,
+                            hintText: ConstantStrings.hintPassword,
                             hintStyle: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
@@ -168,7 +166,7 @@ class _LoginState extends State<LoginScreen> {
                             if (value!.isEmpty ||
                                 !RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
                                     .hasMatch(value)) {
-                              return "Mật khẩu không hợp lệ!";
+                              return ConstantStrings.notValidPassword;
                             } else {
                               return null;
                             }
@@ -198,7 +196,7 @@ class _LoginState extends State<LoginScreen> {
                                     color: appColor.cardColor,
                                   )
                                 : Text(
-                                    "Đăng nhập",
+                                    ConstantStrings.login,
                                     style: TextStyle(
                                       color: appColor.cardColor,
                                       fontWeight: FontWeight.bold,
@@ -214,7 +212,7 @@ class _LoginState extends State<LoginScreen> {
                       Center(
                         child: InkWell(
                           child: Text(
-                            'Quên mật khẩu',
+                            ConstantStrings.forgotPassword,
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
@@ -235,7 +233,7 @@ class _LoginState extends State<LoginScreen> {
                   children: <Widget>[
                     GestureDetector(
                       child: Text(
-                        'Bạn chưa có tài khoản? ',
+                        ConstantStrings.notAccount,
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
@@ -245,12 +243,11 @@ class _LoginState extends State<LoginScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) =>
-                                const RegisterWithPhoneNumber()));
+                        Navigator.pushReplacementNamed(context,
+                            ConstantStrings.routeToRegisterNumberPhoneScreen);
                       },
                       child: Text(
-                        'Đăng ký',
+                        ConstantStrings.register,
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,

@@ -1,3 +1,4 @@
+import 'package:chat_app/constant/strings.dart';
 import 'package:chat_app/mvvm/view/screen/home/provider/home_tab_provider.dart';
 import 'package:chat_app/mvvm/view/screen/home/tab_chat.dart';
 import 'package:chat_app/mvvm/view/screen/home/tab_profile.dart';
@@ -5,14 +6,14 @@ import 'package:chat_app/mvvm/view/screen/home/tab_friend.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   static const List<Widget> _widgetOptions = <Widget>[
     TabChats(),
     TabFriend(),
@@ -33,20 +34,20 @@ class _HomePageState extends State<HomePage> {
           bottomNavigationBar: BottomNavigationBar(
             backgroundColor: Theme.of(context).cardColor,
             elevation: 0,
-            selectedFontSize: 16,
-            unselectedFontSize: 16,
+            selectedFontSize: 14,
+            unselectedFontSize: 14,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.chat),
-                label: 'Tin nhắn',
+                label: ConstantStrings.chat,
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.people),
-                label: 'Bạn bè',
+                label: ConstantStrings.friend,
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.account_box),
-                label: 'Tài khoản',
+                label: ConstantStrings.account,
               ),
             ],
             selectedItemColor: Theme.of(context).primaryColor,

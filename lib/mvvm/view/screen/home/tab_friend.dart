@@ -1,3 +1,4 @@
+import 'package:chat_app/constant/strings.dart';
 import 'package:flutter/material.dart';
 class TabFriend extends StatefulWidget {
   const TabFriend({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class _TabStatusState extends State<TabFriend> {
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          title: const Text('Quang'),
+          title: const Text(ConstantStrings.friend),
           backgroundColor: Colors.transparent,
           elevation: 0,
           actions: [
