@@ -1,4 +1,4 @@
-import 'package:chat_app/widget/button_in_appbar.dart';
+import 'package:chat_app/mvvm/view/component/button_in_appbar.dart';
 import 'package:flutter/material.dart';
 class MyProfileAppbar extends StatelessWidget implements PreferredSizeWidget{
   const MyProfileAppbar({Key? key}) : super(key: key);

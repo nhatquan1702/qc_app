@@ -4,7 +4,7 @@ import 'package:chat_app/constant/strings.dart';
 import 'package:chat_app/mvvm/view/screen/home/provider/picker_img_provider.dart';
 import 'package:chat_app/mvvm/view/screen/home/widget/custom_scrollview.dart';
 import 'package:chat_app/mvvm/view/screen/home/widget/show_image.dart';
-import 'package:chat_app/widget/button_in_appbar.dart';
+import 'package:chat_app/mvvm/view/component/button_in_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';

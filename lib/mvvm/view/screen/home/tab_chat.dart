@@ -1,7 +1,7 @@
 import 'package:chat_app/constant/fakeData.dart';
 import 'package:chat_app/constant/strings.dart';
 import 'package:chat_app/mvvm/view/screen/chat/chat_user_list.dart';
-import 'package:chat_app/widget/button_in_appbar.dart';
+import 'package:chat_app/mvvm/view/component/button_in_appbar.dart';
 import 'package:flutter/material.dart';
 
 class TabChats extends StatefulWidget {

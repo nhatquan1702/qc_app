@@ -1,10 +1,11 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:chat_app/constant/strings.dart';
-import 'package:flutter/foundation.dart';
+import 'package:chat_app/mvvm/viewmodel/auth_vewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
-class RegisterWithPhoneNumber extends StatefulWidget {
+class RegisterWithPhoneNumber extends ConsumerStatefulWidget {
   const RegisterWithPhoneNumber({Key? key}) : super(key: key);
 
   @override
@@ -12,7 +13,8 @@ class RegisterWithPhoneNumber extends StatefulWidget {
       _RegisterWithPhoneNumberState();
 }
 
-class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
+class _RegisterWithPhoneNumberState
+    extends ConsumerState<RegisterWithPhoneNumber> {
   final TextEditingController controller = TextEditingController();
   final bool _isLoading = false;
 
@@ -140,6 +142,7 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
                   child: MaterialButton(
                     minWidth: double.infinity,
                     onPressed: () {
+                      sendPhoneNumber(numberPhone);
                       Navigator.pushNamed(
                           context, ConstantStrings.routeToVerificationScreen);
                     },
@@ -199,5 +202,12 @@ class _RegisterWithPhoneNumberState extends State<RegisterWithPhoneNumber> {
             ),
           ),
         ));
+  }
+
+  void sendPhoneNumber(String numberPhone) {
+    //chưa check dinh dang sdt
+    if (numberPhone.trim().isNotEmpty) {
+      ref.read(authViewModelProvider).signInWithPhone(context, numberPhone);
+    }
   }
 }

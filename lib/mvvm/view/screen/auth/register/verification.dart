@@ -5,7 +5,9 @@ import 'dart:async';
 import 'package:pinput/pinput.dart';
 
 class VerificationScreen extends StatefulWidget {
-  const VerificationScreen({Key? key}) : super(key: key);
+  final String verificationId;
+
+  const VerificationScreen({super.key, required this.verificationId});
 
   @override
   _VerificationScreenState createState() => _VerificationScreenState();
@@ -216,7 +218,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                               resend();
                             },
                             child: Text(
-                              _isResendAgain ? "Còn $_start giây" : ConstantStrings.resendOTP,
+                              _isResendAgain
+                                  ? "Còn $_start giây"
+                                  : ConstantStrings.resendOTP,
                               style: TextStyle(color: appColor.primaryColor),
                             ))
                       ],
@@ -234,7 +238,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         side: BorderSide(color: Theme.of(context).primaryColor),
                       ),
                       elevation: 0,
-                      onPressed: _code.length < 4
+                      onPressed: _code.length < 6
                           ? () {
                               Navigator.pushNamed(
                                   context, ConstantStrings.routeToLoginScreen);

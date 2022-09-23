@@ -8,6 +8,7 @@ import 'package:chat_app/mvvm/view/screen/home/home_screen.dart';
 import 'package:chat_app/mvvm/view/screen/others/error_screen.dart';
 import 'package:chat_app/mvvm/view/screen/profile/edit_profile_screen.dart';
 import 'package:flutter/material.dart';
+
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case ConstantStrings.routeToRegisterNumberPhoneScreen:
@@ -35,22 +36,22 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         builder: (context) => const EditProfileScreen(),
       );
     case ConstantStrings.routeToVerificationScreen:
+      final verificationId = settings.arguments as String;
       return MaterialPageRoute(
-        builder: (context) => const VerificationScreen(),
+        builder: (context) => VerificationScreen(
+          verificationId: verificationId,
+        ),
       );
     default:
       return MaterialPageRoute(
         builder: (context) => const Scaffold(
-          body: ErrorScreen(messageError: 'Một lỗi đã xảy ra', codeError: '000', titleError: 'Lỗi',),
+          body: ErrorScreen(
+            messageError: 'Một lỗi đã xảy ra',
+            codeError: '000',
+            titleError: 'Lỗi',
+          ),
         ),
       );
-    // case OTPScreen.routeName:
-    //   final verificationId = settings.arguments as String;
-    //   return MaterialPageRoute(
-    //     builder: (context) => OTPScreen(
-    //       verificationId: verificationId,
-    //     ),
-    //   );
     // case MobileChatScreen.routeName:
     //   final arguments = settings.arguments as Map<String, dynamic>;
     //   final name = arguments['name'];
